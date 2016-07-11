@@ -12,27 +12,24 @@ echo "source `pwd`/zshrc.zsh" >> .load_zshrc.zsh
 ln -s `pwd`/.load_zshrc.zsh ~/.zshrc 2>/dev/null
 
 # install vimrc
+rm -rf ~/.vim_runtime_old_nepjua 2>/dev/null
 mv ~/.vim_runtime ~/.vim_runtime_old_nepjua 2>/dev/null
 ln -s `pwd`/modules/vimrc ~/.vim_runtime 2>/dev/null
 sh ~/.vim_runtime/install_awesome_vimrc.sh 2>/dev/null
 
-# install tmuxconf
-mv ~/.tmux ~/.tmux_old_nepjua 2>/dev/null
-mv ~/.tmux.conf ~/.tmux.conf_old_nepjua 2>/dev/null
-ln -s `pwd`/modules/tmux ~/.tmux 2>/dev/null
-ln -s ~/.tmux/.tmux.conf ~/.tmux.conf 2>/dev/null
+`pwd`/install/tmux.sh
 
 # install powerline fonts
 ./modules/powerline-fonts/install.sh 2>/dev/null
 
 # install nvm
+mv ~/.nvm_old_nepjua 2>/dev/null
 mv ~/.nvm ~/.nvm_old_nepjua 2>/dev/null
 ln -s `pwd`/modules/nvm ~/.nvm 2>/dev/null
 # install stable node.js and make it default
 . ~/.nvm/nvm.sh
-nvm install stable
-nvm alias default stable
-npm config set loglevel http
+nvm install node
+nvm alias default node
 
 # warning
 echo ""
